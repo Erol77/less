@@ -1,0 +1,23 @@
+{
+  "name": "glo-intensiv",
+  "version": "1.0.0",
+  "description": "dostavka",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Erol77/less.git"
+  },
+  "author": "veliev erol",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Erol77/less/issues"
+  },
+  "homepage": "https://github.com/Erol77/less#readme",
+  "devDependencies": {
+    "webpack": "^5.62.1",
+    "webpack-cli": "^4.9.1"
+  }
+}
