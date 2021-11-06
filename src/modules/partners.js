@@ -1,19 +1,22 @@
 // const array = [11,22,34,65];
 'use strict';
-const renderItems = (data) => {
-    console.log(data);
-    data.forEach((elem,index,array) => {
-    console.log(elem)});
-};
+const partners = () => {    
+    const renderItems = (data) => {
+        console.log(data);
+        data.forEach((elem,index,array) => {
+        console.log(elem)});
+    };
 
-fetch('./db/partners.json')
-    .then((response) => response.json())
-    .then((data) => {
-        renderItems(data);
-    })
-    .catch((error)=>{
-        console.log(error);
-    });
+    fetch('./db/partners.json')
+        .then((response) => response.json())
+        .then((data) => {
+            renderItems(data);
+        })
+        .catch((error)=>{
+            console.log(error);
+        });
+};
+export default partners;
 
 
 // array.forEach((elem,index,array) => {//в фу-ию приходит 3 аргумента, 1 элт ,2 его индех, 3 весь массив
