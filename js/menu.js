@@ -1,8 +1,9 @@
+'use strict';
 const restourant = 'food-band';
 const renderItems = (data) =>{
     console.log(data);
-     data.forEach((elem,index,array) => {
-          console.log(elem)});
+    data.forEach((elem,index,array) => {
+        console.log(elem)});
 };
 // http://erol.qlihost.ru/db.json
 fetch(`./db/${restourant}.json`)

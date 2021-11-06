@@ -1,16 +1,18 @@
 // const array = [11,22,34,65];
+'use strict';
 const renderItems = (data) => {
     console.log(data);
+    data.forEach((elem,index,array) => {
+    console.log(elem)});
 };
 
 fetch('./db/partners.json')
-    .then((response) => {response.json()}
-    )
+    .then((response) => response.json())
     .then((data) => {
         renderItems(data);
     })
     .catch((error)=>{
-        console.log(error)
+        console.log(error);
     });
 
 
