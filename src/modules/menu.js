@@ -1,10 +1,22 @@
-const cardsMenu = document.querySelector('.cards-menu');
 const menu = () => {
-    const restaurant = localStorage.getItem('restaurant');
+    const cardsMenu = document.querySelector('.cards-menu');
+
+    const restaurant = JSON.parse(localStorage.getItem('restaurant'));
+    const changeTitle = (restaurant) => {
+        const restaurantTitle = document.querySelector('.restaurant-title');
+        const rating = document.querySelector('.rating');
+        const price = document.querySelector('.price');
+        const category = document.querySelector('.category');
+
+        restaurantTitle.textContent = restaurant.name;
+        rating.textContent = restaurant.stars;
+        price.textContent = `От ${restaurant.price} ₽`;
+        category.textContent = restaurant.kitchen;
+    };
     const renderItems = (data) =>{
-        console.log(data);
+        // console.log(data);
         data.forEach((elem,index,array) => {
-            console.log(elem)
+            // console.log(elem)
             const {description, id, image, name, price} = elem;
             const card = document.createElement('div');
             card.classList.add('card');
@@ -27,12 +39,13 @@ const menu = () => {
                     </div>
                 </div>
             `;
-cardsMenu.append(card);
+            cardsMenu.append(card);
             });
     };
     // http://erol.qlihost.ru/db.json
     if (restaurant){
-        fetch(`./db/${restaurant}`)
+        changeTitle(restaurant);
+        fetch(`./db/${restaurant.products}`)
         .then((response) => response.json())
         .then((data) => {
             renderItems(data);
@@ -41,6 +54,8 @@ cardsMenu.append(card);
             console.log(error)
         });
         // .finally()
+    }else{
+        window.location.href = '/';
     }
 
 };

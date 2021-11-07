@@ -1,6 +1,6 @@
-// const array = [11,22,34,65];
-const cardsRestaurants = document.querySelector('.cards-restaurants');
-        //console.dir(cardsRestaurants);
+import auth from "./auth";
+const cardsRestaurants = document.querySelector('.cards-restaurants');        //console.dir(cardsRestaurants);
+
 const partners = () => {    
     const renderItems = (data) => {       
         data.forEach((elem,index,array) => {
@@ -29,9 +29,15 @@ const partners = () => {
                         </div>`;  
             a.addEventListener('click',(e)=>{
                 e.preventDefault();
-                const link = a.dataset.products;
-                localStorage.setItem('restaurant', link);
-                window.location.href = "/restaurant.html";
+                if (localStorage.getItem('user')){
+                    localStorage.setItem('restaurant', JSON.stringify(elem));
+                    window.location.href = "/restaurant.html";
+                } else {
+                    // auth
+                    const buttonAuth = document.querySelector('.button-auth').click() ;
+
+                }
+
             });
         cardsRestaurants.append(a);
         });
@@ -47,35 +53,6 @@ const partners = () => {
         });
 };
 export default partners;
-/*
-<a href="restaurant.html" class="card card-restaurant">
-    <img src="img/pizza-plus/preview.jpg" alt="image" class="card-image" />
-    <div class="card-text">
-        <div class="card-heading">
-            <h3 class="card-title">Пицца плюс</h3>
-            <span class="card-tag tag">50 мин</span>
-        </div>
-        <!-- /.card-heading -->
-        <div class="card-info">
-            <div class="rating">
-                4.5
-            </div>
-            <div class="price">От 900 ₽</div>
-            <div class="category">Пицца</div>
-        </div>
-        <!-- /.card-info -->
-    </div>
-    <!-- /.card-text -->
-</a>
-<!-- /.card --></div>
-
-*/
-// array.forEach((elem,index,array) => {//в фу-ию приходит 3 аргумента, 1 элт ,2 его индех, 3 весь массив
-//     if (index ===3 ){        console.log(elem);    }});
-
-// for (let i=0; i < array.length; i++){
-// console.log(array[i]);}
-
 // array.forEach((elem,index,array) => {//в фу-ию приходит 3 аргумента, 1 элт ,2 его индех, 3 весь массив
 //     console.log(elem);
     // console.log(index);
