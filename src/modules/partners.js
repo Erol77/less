@@ -27,6 +27,12 @@ const partners = () => {
                                 <div class="category">${kitchen}</div>
                             </div>
                         </div>`;  
+            a.addEventListener('click',(e)=>{
+                e.preventDefault();
+                const link = a.dataset.products;
+                localStorage.setItem('restaurant', link);
+                window.location.href = "/restaurant.html";
+            });
         cardsRestaurants.append(a);
         });
     };
