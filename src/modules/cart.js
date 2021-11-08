@@ -5,6 +5,34 @@ const cart = ()=>{
     const clearCart = document.querySelector('.clear-cart');
     const body = modalCart.querySelector('.modal-body');
 
+    const decrementCount = (id) =>{
+        const cartArray = JSON.parse(localStorage.getItem('cart'));
+        cartArray.map((item) =>{
+            if (item.id === id){
+                if (item.count > 0){
+                   item.count--;  
+                } else {
+                    item.count = 0;
+                }
+               
+            }
+            return item;
+        });
+        localStorage.setItem('cart',JSON.stringify(cartArray));
+        renderItems(cartArray);
+    };
+    const incrementCount = (id) =>{
+        const cartArray = JSON.parse(localStorage.getItem('cart'));
+        cartArray.map((item) =>{
+            if (item.id === id){
+               item.count++; 
+            }
+            return item;
+        });
+        localStorage.setItem('cart',JSON.stringify(cartArray));
+        renderItems(cartArray);
+    };
+
     const renderItems = (data) => {
         body.innerHTML = '';
         data.forEach(cartItem => {
@@ -20,6 +48,14 @@ const cart = ()=>{
 						<button class="counter-button btn-inc">+</button>
 					</div>
             `;
+            cartEltm.querySelector('.btn-dec').addEventListener('click',()=>{
+                console.log('-');
+                decrementCount(cartItem.id);
+            });
+            cartEltm.querySelector('.btn-inc').addEventListener('click',()=>{
+                console.log('+');
+                incrementCount(cartItem.id);
+            });
             body.append(cartEltm);
         });
     };

@@ -13,9 +13,9 @@ const menu = () => {
         price.textContent = `От ${restaurant.price} ₽`;
         category.textContent = restaurant.kitchen;
     };
-    const cartArray = localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart')) : [];
     const addToCart = (cartItem)=>{
-        // console.log();
+
+        const cartArray = localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart')) : [];
         if (cartArray.some((item) => item.id === cartItem.id)){
             cartArray.map((item =>{
                  if (item.id === cartItem.id){
