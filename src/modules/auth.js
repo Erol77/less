@@ -7,10 +7,12 @@ const auth = () => {
     const logInForm = document.getElementById('logInForm');
     const inputLogin = document.getElementById('login');
     const inputPassword = document.getElementById('password');
+    const cartButton = document.getElementById('cart-button');
 
     const login = (user) => {
         buttonAuth.style.display = 'none';
         buttonOut.style.display = 'flex';
+        cartButton.style.display = 'flex';
         userName.style.display = 'flex';
         userName.textContent = user.login;
         modalAuth.style.display = 'none';
@@ -19,6 +21,7 @@ const auth = () => {
     const logout = () => {
         buttonAuth.style.display = 'flex';
         buttonOut.style.display = 'none';
+        cartButton.style.display = 'none';
         userName.style.display = 'none';
         userName.textContent = '';
         localStorage.removeItem('user');
