@@ -13,12 +13,19 @@ const menu = () => {
         price.textContent = `От ${restaurant.price} ₽`;
         category.textContent = restaurant.kitchen;
     };
-    const cartArray = [];
+    const cartArray = localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart')) : [];
     const addToCart = (cartItem)=>{
-        console.log(cartArray.some(cartItem));
-        // if ()
+        // console.log();
+        if (cartArray.some((item) => item.id === cartItem.id)){
+            cartArray.map((item =>{
+                 if (item.id === cartItem.id){
+                     item.count++;}                 
+            return item;}));
+        } else{
         cartArray.push(cartItem);
-        localStorage.setItem('cart',JSON.stringify( cartArray));
+     }
+        localStorage.setItem('cart',JSON.stringify(cartArray));
+   
     };
     const renderItems = (data) =>{
         // console.log(data);
@@ -47,7 +54,7 @@ const menu = () => {
                 </div>
             `;
              card.querySelector('.button-card-text').addEventListener('click', () => {
-                 const cartItem = {name: name,price: price,count: 1, id};
+                 const cartItem = {name: name,price: price,id:id,count: 1, };
                  addToCart(cartItem);
              });
             cardsMenu.append(card);
