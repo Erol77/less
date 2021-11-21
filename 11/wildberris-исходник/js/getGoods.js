@@ -1,5 +1,7 @@
 const getGoods = function(){
     const links = document.querySelectorAll('.navigation-link');
+    const more = document.querySelector('.more');
+
     const renderGoods = (goods) =>{
         const goodsContainer = document.querySelector('.long-goods-list');
         goodsContainer.innerHTML = '';
@@ -46,6 +48,16 @@ const getGoods = function(){
             getData(linkValue,category);
         });
     });
+
+    try{
+         more.addEventListener('click', (e)=>{
+            e.preventDefault();
+            // getData(e);
+             getData();
+    });
+    } catch(e){
+        console.error(e.message);
+    }
 
     if(localStorage.getItem('goods') && window.location.pathname === '/goods.html'){
         renderGoods(JSON.parse(localStorage.getItem('goods')));
