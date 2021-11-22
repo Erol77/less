@@ -18,7 +18,7 @@ const getGoods = function(){
 	
 						<p class="goods-description">${good.description}</p>
 		
-						<button class="button goods-card-btn add-to-cart" data-id="007">
+						<button class="button goods-card-btn add-to-cart" data-id="${good.id}">
 							<span class="button-price">$${good.price}</span>
 						</button>
 					</div>
