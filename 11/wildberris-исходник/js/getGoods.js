@@ -49,18 +49,16 @@ const getGoods = function(){
         });
     });
 
-    try{
-         more.addEventListener('click', (e)=>{
-            e.preventDefault();
-            // getData(e);
-             getData();
-    });
-    } catch(e){
-        console.error(e.message);
-    }
+
 
     if(localStorage.getItem('goods') && window.location.pathname === '/goods.html'){
         renderGoods(JSON.parse(localStorage.getItem('goods')));
+    }
+    if(more){
+        more.addEventListener('click', () => {
+            event.preventDefault();
+             getData();  
+        } );
     }
 };
 getGoods();

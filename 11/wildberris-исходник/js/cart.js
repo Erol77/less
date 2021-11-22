@@ -10,5 +10,12 @@ const cart = function (){
     btnClose.addEventListener('click', function () {
         cart.style.display = '';
     });
+    cart.addEventListener('click', (event) => {
+        if(!event.target.closest('.modal'))
+        cart.style.display = '';
+    });
+    window.addEventListener('keydown', (e)=>{
+        if(e.key === 'Escape') cart.style.display = '';
+    });
 };
 cart();
